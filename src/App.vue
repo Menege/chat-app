@@ -1,5 +1,5 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <img alt="To do app logo" src="./assets/logo.png">
   <tasks/>
 </template>
 
