@@ -20,35 +20,24 @@
 
 <script>
 import Item from "./Item.vue";
+import { mapGetters, mapMutations } from "vuex";
 export default {
-  data() {
-    return {
-      nameTask: "",
-      tasks: JSON.parse(localStorage.getItem("my-tasks")) ?? [],
-      da: null,
-    };
-  },
   computed: {
-    label() {
-      return this.nameTask;
+    ...mapGetters(["nameTask"]),
+    nameTask: {
+      get() {
+        return this.$store.state.nameTask;
+      },
+      set(value) {
+        this.$store.commit("updateNameTask", value);
+      },
     },
+    ...mapGetters(["tasks"]),
   },
-
   methods: {
-    delite(idx) {
-      this.tasks.splice(idx, 1);
-      localStorage.setItem("my-tasks", JSON.stringify(this.tasks));
-      console.log(this.tasks);
-    },
-    prov() {
-      if (this.nameTask) {
-        this.tasks.push(this.nameTask);
-        localStorage.setItem("my-tasks", JSON.stringify(this.tasks));
-        this.nameTask = "";
-      }
-    },
+    ...mapMutations(["prov"]),
+    ...mapMutations(["delite"], 'idx'),
   },
-  name: "HelloWorld",
   components: { Item },
 };
 </script>
