@@ -8,7 +8,7 @@
         v-model="nameTask"
       />
     </div>
-    <button class="btn primary" @click.prevent="prov">Добавить задачу</button>
+    <button class="btn primary" @click="prov">Добавить задачу</button>
     <h3>Список задач:</h3>
     <h4 v-if="!tasks.length">Добавьте первую задачу...</h4>
     <div else v-for="(task, idx) in tasks" :key="task.id">
