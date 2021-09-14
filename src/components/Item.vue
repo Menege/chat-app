@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import { methods, ref } from "vue";
+import { ref } from "vue";
 export default {
   setup(props, emit) {
     let checked = ref(false);
 
-    const check = methods(() => {
+    const check = (() => {
       setTimeout(() => {
         if (checked.value) {
           emit("delite-item", props.idx);
