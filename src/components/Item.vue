@@ -7,25 +7,27 @@
 </template>
 
 <script>
+import { methods, ref } from "vue";
 export default {
-  data() {
+  setup(props, emit) {
+    let checked = ref(false);
+
+    const check = methods(() => {
+      setTimeout(() => {
+        if (checked.value) {
+          emit("delite-item", props.idx);
+          checked.value = false;
+        }
+      }, 150);
+    });
     return {
-      checked: false,
+      checked,
+      check
     };
   },
 
   props: ["task", "idx"],
   emits: ["delite-item"],
-  methods: {
-    check() {
-     setTimeout(() => {
-        if (this.checked) {
-          this.$emit("delite-item", this.idx);
-          this.checked = false;
-        }
-      }, 150);
-    },
-  },
 };
 </script>
 

@@ -19,25 +19,34 @@
 </template>
 
 <script>
+import {computed} from 'vue'
 import Item from "./Item.vue";
-import { mapGetters, mapMutations } from "vuex";
+import {useStore} from 'vuex'
+// import { mapGetters, mapMutations } from "vuex";
 export default {
-  computed: {
-    ...mapGetters(["nameTask"]),
-    nameTask: {
-      get() {
-        return this.$store.state.nameTask;
-      },
-      set(value) {
-        this.$store.commit("updateNameTask", value);
-      },
-    },
-    ...mapGetters(["tasks"]),
-  },
-  methods: {
-    ...mapMutations(["prov"]),
-    ...mapMutations(["delite"], 'idx'),
-  },
+setup(){
+const store=useStore()
+
+const nameTask=computed(()=> store.state.getters.nameTask)
+},
+
+
+  // computed: {
+  //   ...mapGetters(["nameTask"]),
+  //   nameTask: {
+  //     get() {
+  //       return this.$store.state.nameTask;
+  //     },
+  //     set(value) {
+  //       this.$store.commit("updateNameTask", value);
+  //     },
+  //   },
+  //   ...mapGetters(["tasks"]),
+  // },
+  // methods: {
+  //   ...mapMutations(["prov"]),
+  //   ...mapMutations(["delite"], 'idx'),
+  // },
   components: { Item },
 };
 </script>
