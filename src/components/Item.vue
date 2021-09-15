@@ -7,27 +7,27 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref} from "vue";
 export default {
-  setup(props, emit) {
+   props: ["task", "idx"],
+  emits: ["delite-item"],
+  setup(props, { emit }) {
     let checked = ref(false);
 
-    const check = (() => {
+
+    let check = () => {
       setTimeout(() => {
         if (checked.value) {
           emit("delite-item", props.idx);
-          checked.value = false;
+          checked = ref(false);
         }
-      }, 150);
-    });
+      }, 3000);
+    };
     return {
       checked,
-      check
+      check,
     };
-  },
-
-  props: ["task", "idx"],
-  emits: ["delite-item"],
+  }
 };
 </script>
 

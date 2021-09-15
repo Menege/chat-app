@@ -27,14 +27,22 @@ export default {
   setup() {
     const store = useStore();
 
+    const delite = computed((idx) => store.commit("delite",idx));
 
-const delite = (idx) => computed(()=> store.commit('delite',idx))
+    const nameTask = computed({
+  get: () => store.state.nameTask,
+  set: (val) => store.commit('updateNameTask', val)
+})
+
+const tasks=computed(()=>store.state.tasks)
+
+const prov=computed(() => store.commit("prov"))
 
     return {
-      nameTask: computed(() => store.state.nameTask),
-      tasks: computed(() => store.state.tasks),
-      prov: computed(() => store.commit('prov')),
-      delite
+      nameTask,
+      tasks,
+      prov,
+      delite,
     };
   },
 
