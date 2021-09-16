@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { ref} from "vue";
+import { ref,computed} from "vue";
 export default {
    props: ["task", "idx"],
   emits: ["delite-item"],
@@ -15,14 +15,14 @@ export default {
     let checked = ref(false);
 
 
-    let check = () => {
-      setTimeout(() => {
+    let check = computed(() => {
+       setTimeout(() => {
         if (checked.value) {
           emit("delite-item", props.idx);
           checked = ref(false);
         }
-      }, 3000);
-    };
+      }, 3000)
+    })
     return {
       checked,
       check,
