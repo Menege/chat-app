@@ -17,7 +17,7 @@ export default {
 
     let check = computed(() => {
        setTimeout(() => {
-        if (checked.value) {
+        if  (checked.value) {
           emit("delite-item", props.idx);
           checked = ref(false);
         }
