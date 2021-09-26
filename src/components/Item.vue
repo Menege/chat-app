@@ -24,7 +24,7 @@ export default {
       }, 3000)
     })
     return {
-      checked,
+       checked,
       check,
     };
   }
